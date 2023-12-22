@@ -1,9 +1,9 @@
 class VirtualSkynode < Formula
     desc "Virtual Skynode simulates an Auterion Skynode for development purposes"
     homepage "https://auterion.com"
-    url "https://dl.cloudsmith.io/public/auterion/public/raw/versions/0.0.8/virtual-skynode.tar.gz"
-    sha256 "ebee169c128333ed58843bf43439d6e166dec67f30ae42e28cd5e4cabd3680ff"
-    version "0.0.8" 
+    url "https://dl.cloudsmith.io/public/auterion/public/raw/versions/0.0.10/virtual-skynode.tar.gz"
+    sha256 "7355ea7d11adc8093b5938ed900a2d9d693ef8ada9fe15cd0db038fe1648dca7"
+    version "0.0.10" 
   
     depends_on "qemu"
     depends_on "python3"

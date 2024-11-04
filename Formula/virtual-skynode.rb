@@ -16,15 +16,21 @@ class VirtualSkynode < Formula
   end
 
   def install
-    venv = virtualenv_create(libexec)
+    venv = virtualenv_create(libexec, "python3")
     venv.pip_install resource("semver")
-
-    bin.install "virtual-skynode"
-    bin.install "virtual-skynode-convert-rootfs"
-
+  
+    # Manually copy the necessary binaries to the virtual environment
+    libexec_bin = libexec/"bin"
+    libexec_bin.install "virtual-skynode"
+    libexec_bin.install "virtual-skynode-convert-rootfs"
+  
+    # Create wrapper scripts to ensure the virtual environment is activated
+    (bin/"virtual-skynode").write_env_script libexec_bin/"virtual-skynode", PATH: "#{libexec_bin}:$PATH"
+    (bin/"virtual-skynode-convert-rootfs").write_env_script libexec_bin/"virtual-skynode-convert-rootfs", PATH: "#{libexec_bin}:$PATH"
+  
     # Create the share/virtual-skynode directory
     (share/"virtual-skynode").mkpath
-
+  
     # Install the bzImage into the created directory
     (share/"virtual-skynode").install "bzImage"
   end

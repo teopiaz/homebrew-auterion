@@ -2,4 +2,4 @@
 
 Currently contains:
 
-- virtual-skynode 0.0.14
+- virtual-skynode 0.0.15
